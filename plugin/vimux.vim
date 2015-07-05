@@ -20,7 +20,7 @@ function! VimuxRunCommandInDir(command, useFile)
     if a:useFile ==# 1
         let l:file = shellescape(expand('%:t'), 1)
     endif
-    call VimuxRunCommand("cd ".shellescape(expand('%:p:h'), 1)." && ".a:command." ".l:file." && cd - > /dev/null")
+    call VimuxRunCommand("cd ".fnamemodify('.',':p')." && ".a:command." ".l:file." && cd - > /dev/null")
 endfunction
 
 function! VimuxRunLastCommand()
